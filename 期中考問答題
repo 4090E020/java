@@ -14,7 +14,7 @@
          t = x;
          x = y;
          y = t;
-         System.out.println("傳值呼叫中\t x = " + x + "\t y = " =y );
+         System.out.println("傳值呼叫中\t x = " + x + "\t y = " +y );
           }
          }
     
