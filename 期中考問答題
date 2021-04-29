@@ -1,0 +1,68 @@
+#傳值呼叫(Call By Value)
+```說明:方法中的虛引數如果宣告為基本資料型別，如char、byte、short、int、long、float、double、boolean八種型別變數，就表示該方法的引數傳遞方式是採傳值呼叫(Call By Value)。基本資料型別的變數是存放
+在Stack堆疊儲存空間，方法若採傳值呼叫，則呼叫敘述的實引數與被呼叫方的虛引數是分別佔用不同記憶體，因此，使用傳值呼叫可以防止變數被方法更改。
+```程式碼:package ex05;
+         public class CallByVal {
+         public static void main(String[] args) {
+         int a = 10, b = 15;
+         System.out.println("傳值呼叫前\t a = " + a + "\t b = " + b);                                        傳值呼叫前 a = 10, b = 15
+         byVal (a, b);                                                                                      傳值呼叫中 x = 15, y = 10  
+         System.out.println(" 傳值呼叫後\t a = " + a + "\t b = " + b);                                       傳值呼叫後 a = 10, b = 15
+         }
+         static void byVal(int x, int y) {
+         int t; //以變數t作為暫存區，將引數互換
+         t = x;
+         x = y;
+         y = t;
+         System.out.println("傳值呼叫中\t x = " + x + "\t y = " =y );
+          }
+         }
+    
+#參考呼叫(Call By Reference)
+```說明:方法中的虛引數若宣告為參考資料型別，如陣列、物件...等，表示此方法的引數傳遞方式是採參考呼叫(Call By Reference)。所謂的參考呼叫，就是呼叫敘述的實引數與被呼叫方法的虛引數，兩者佔用同一記憶體
+位址，也就是說在做引數傳遞時，呼叫敘述中的實引數是將自己本身的記憶體位址傳給被呼叫方法的虛引數。因此，以參考呼叫傳遞引數的好處，就是被呼叫方法可以透過該引數直接將資料傳值回給呼叫敘述。
+```程式碼:package ex05;
+         class Obj {
+         int a, b;
+         Obj () {
+             a = 10;
+             b = 15;
+          }
+         }
+         public class CallByRef {
+         public static void main(String[] args) {
+         Obj obj = new Obj () ;
+         System.out.println(" 餐考呼叫前\t a = " + obj.a + "\tb = " + obj.b);                            參考呼叫前 a =10 b =15
+         byRef(obj);                                                                                    參考呼叫後 a =15 b =10
+         System.out.println(" 參考呼叫後\t a = " + obj.a + "\tb = " + obj.b);
+         }
+         static void byRef(Obj p) {
+            int t;
+            t = p.a;
+            p.a = p.b;
+            p.b = t;
+          }
+         } 
+         
+ #方法多載(method overloading)
+ ```說明:所謂的方法多載或稱為超載、覆載，就是在同一個類別中，允許方法使用相同的名稱，但是後面所接的引數串列必須是資料型別不同、個數或順序不同。
+ ```程式碼:01 void methed(){}
+          02 int methed(){} //不能多載:雖然傳回值不同但引數個數相同
+          03 void methed(int a){} //成功多載:比第1行的方法多一個引數
+          04 void methed(int b){} //不能多載:引數名稱不同，但和第3行的型別和個數相同
+          05 void methed(String s){} //成功多載:雖然和第3行引數個數相同但型別不同
+          06 void methed(int a ,String s){} //成功多載:引數個數和型別不同
+          07 void methed(String s ,int a){} //成功多載:和第6行引數個數和型別相同但順序不同
+            
+            
+            
+            
+         
+         
+         
+         
+         
+         
+         
+         
+         
